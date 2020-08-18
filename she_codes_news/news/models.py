@@ -6,3 +6,6 @@ class NewsStory(models.Model):
     author = models.CharField(max_length=200)
     pub_date = models.DateTimeField()
     content = models.TextField()
+    image = models.ImageField(upload_to='images')
+# the above image option requires Pillow Library
+    # caption = models.CharField(max_length=50)

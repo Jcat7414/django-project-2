@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat+Subrayada:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Playball&display=swap'');
 
 body {
     background-color: rgb(240, 239, 239);
@@ -16,14 +16,14 @@ img {
 }
 
 h1 {
-    font-family: 'Montserrat Subrayada', sans-serif;
+    font-family: 'Playball', cursive;
     text-decoration: none;
     font-size: 4rem;
     margin: 0;
 }
 
 h2 {
-   font-family: 'Montserrat Subrayada', sans-serif; 
+   font-family: 'Playball', cursive; 
 }
 
 h3 {
@@ -50,5 +50,5 @@ a {
 }
 
 a, p {
-    font-family: monospace;
+    font-family: 'Open Sans', sans-serif;
 }

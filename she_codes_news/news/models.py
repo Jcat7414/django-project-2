@@ -35,16 +35,14 @@ class NewsStory(models.Model):
     category = models.CharField(max_length=20, verbose_name="story category", default='Type of Story')
     content = models.TextField(verbose_name="")
     linkedin_url = models.CharField(max_length=200, verbose_name="linkedIn profile URL", default="Paste your LinkedIn URL here")
-    image = models.ImageField(upload_to='story/images', verbose_name="story photo", default="placeholder-1.jpg")
+    image = models.ImageField(upload_to='story_image/', verbose_name="story photo", default="placeholder-1.jpg")
     @property
     def better_date(self):
         if self.pub_date:
             return self.pub_date.strftime("%d %b %Y")
         else:
             return "no_date"
-    # @formname
-    # def get_verbose_name(object):
-    #     return object._meta.verbose_name
+    
 
 # class Image(models.Model):
 #     title = models.CharField(max_length=50)

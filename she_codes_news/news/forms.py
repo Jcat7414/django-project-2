@@ -7,10 +7,6 @@ class StoryForm(ModelForm):
     class Meta:
         model = NewsStory
         fields = ['title', 'author', 'pub_date', 'content', 'category', 'linkedin_url', 'image']
-        # labels = {
-        #     for field in Meta.fields
-        #         Meta.labels[fields] = Meta.model._meta.get_field(fields).verbose_name.title()
-        # }
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-input'}),
             'author': forms.TextInput(attrs={'class': 'form-input'}),

@@ -6,12 +6,23 @@ from .models import NewsStory
 class StoryForm(ModelForm):
     class Meta:
         model = NewsStory
-        fields = ['title', 'author', 'pub_date', 'content', 'category', 'image']
+        fields = ['title', 'author', 'pub_date', 'content', 'category', 'linkedin_url', 'image']
+        # labels = {
+        #     for field in Meta.fields
+        #         Meta.labels[fields] = Meta.model._meta.get_field(fields).verbose_name.title()
+        # }
         widgets = {
-            'pub_date': forms.DateInput(format=('%m/%d/%Y'), 
-            attrs={'class':'form-control', 'placeholder':'Select a date', 
-            'type':'date'}),
+            'title': forms.TextInput(attrs={'class': 'form-input'}),
+            'author': forms.TextInput(attrs={'class': 'form-input'}),
+            'pub_date': forms.DateInput(format=('%m/%d/%Y'), attrs={'class':'form-input', 'placeholder':'Select a date', 'type':'date'}),
+            'content': forms.Textarea(attrs={'class': 'form-input', 'placeholder': 'Write the story here'}),
+            'category': forms.TextInput(attrs={'class': 'form-input', 'placeholder': 'Type of Story'}),
+            'linkedin_url': forms.TextInput(attrs={'class': 'form-input', 'placeholder': 'Paste your LinkedIn URL here'}),
+            # 'image': forms.ImageField(attrs={'class': 'form-control'}),
         }
+
+    
+
 
 # class ImageForm(ModelForm):
 #     # form for the image model

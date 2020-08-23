@@ -1,7 +1,4 @@
-
-html {
-    font-family: 'Open Sans', sans-serif;
-}
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Playball&family=Quicksand:wght@400;700&display=swap')
 
 .story-card {
     margin: 2px;

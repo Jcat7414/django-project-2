@@ -19,21 +19,21 @@ class IndexView(generic.ListView):
         context['all_stories'] = NewsStory.objects.order_by('-pub_date').all()
         return context
 
-# class ImageView(generic.CreateView):
-#     template_name = 'news/createStory.html'
+class ImageView(generic.CreateView):
+    template_name = 'news/createStory.html'
 
-#     def image_upload_view(request):
-#         """Process images uploaded by users"""
-#         if request.method == 'POST':
-#             form = ImageForm(request.POST, request.FILES)
-#             if form.is_valid():
-#                 form.save()
-#                 # Get the current instance object to display in the template
-#                 img_obj = form.instance
-#                 return render(request, 'index.html', {'form': form, 'img_obj': img_obj})
-#         else:
-#             form = ImageForm()
-#         return render(request, 'index.html', {'form': form})
+    def image_upload_view(request):
+        """Process images uploaded by users"""
+        if request.method == 'POST':
+            form = StoryForm(request.POST, request.FILES)
+            if form.is_valid():
+                form.save()
+                # Get the current instance object to display in the template
+                img_obj = story.image
+                return render(request, 'story.html', {'form': form, 'img_obj': img_obj})
+        else:
+            form = StoryForm()
+        return render(request, 'createStory.html', {'form': form})
 
 class StoryView(generic.DetailView):
     model = NewsStory

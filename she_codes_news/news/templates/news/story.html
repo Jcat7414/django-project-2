@@ -14,7 +14,7 @@
     <div id="story-content">
         <!-- <img src="{% static '/news/images/placeholder-5.jpg' %}"> -->
         <!-- <img src="/images/story/images/Imogen_King.jpg"> -->
-        <img src="{{ story.image }}" alt="" width="250">
+        <img src="{{ story.image.url }}" alt="" width="250">
         {{ story.content|linebreaks }}
     </div>
 </div>

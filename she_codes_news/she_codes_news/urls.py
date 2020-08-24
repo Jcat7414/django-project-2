@@ -18,8 +18,10 @@ from django.urls import path, include
 # the following are associated with uploading media files
 from django.conf import settings
 from django.conf.urls.static import static
+# from .views import *
 
 urlpatterns = [
+    # path('image_upload', image_upload_view, name = 'image_upload')
     path('news/', include('news.urls')),
     path('admin/', admin.site.urls),
 ]

@@ -12,8 +12,6 @@
     <h4>{{ story.author }}</h4>
     <h4>{{ category }}</h4>
     <div id="story-content">
-        <!-- <img src="{% static '/news/images/placeholder-5.jpg' %}"> -->
-        <!-- <img src="/images/story/images/Imogen_King.jpg"> -->
         <img src="{{ story.image.url }}" alt="" width="250">
         {{ story.content|linebreaks }}
     </div>

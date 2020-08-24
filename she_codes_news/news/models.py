@@ -17,7 +17,7 @@ class Family(models.Model):
         (TEAM, "Flair Team"), 
         (ADVOCATE, "Advocate")
     ]
-    type = models.CharField(max_length=20, choices=FAMILY_TYPE, default=FOUNDER)
+    type = models.CharField(max_length=20, verbose_name="family member type", choices=FAMILY_TYPE, default=FOUNDER)
 
     def get_queryset(self):
             '''Return all family types.'''
@@ -34,7 +34,7 @@ class NewsStory(models.Model):
     pub_date = models.DateTimeField(verbose_name="date published")
     category = models.CharField(max_length=20, verbose_name="story category", default='Type of Story')
     content = models.TextField(verbose_name="")
-    linkedin_url = models.CharField(max_length=200, verbose_name="linkedIn profile URL", default="Paste your LinkedIn URL here")
+    linkedin_url = models.CharField(max_length=200, verbose_name="linkedIn profile URL", default="Paste your LinkedIn URL here", blank=True)
     image = models.ImageField(upload_to='story_image/', verbose_name="story photo", default="placeholder-1.jpg")
     @property
     def better_date(self):
@@ -43,8 +43,4 @@ class NewsStory(models.Model):
         else:
             return "no_date"
     
-
-# class Image(models.Model):
-#     title = models.CharField(max_length=50)
-#     image = models.ImageField(upload_to='images')
 

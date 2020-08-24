@@ -1,7 +1,6 @@
 from django import forms
 from django.forms import ModelForm
 from .models import NewsStory
-# from .models import Image
 
 class StoryForm(ModelForm):
     class Meta:
@@ -14,14 +13,8 @@ class StoryForm(ModelForm):
             'content': forms.Textarea(attrs={'class': 'form-input', 'placeholder': 'Write the story here'}),
             'category': forms.TextInput(attrs={'class': 'form-input', 'placeholder': 'Type of Story'}),
             'linkedin_url': forms.TextInput(attrs={'class': 'form-input', 'placeholder': 'Paste your LinkedIn URL here'}),
-            # 'image': forms.ImageField(attrs={'class': 'form-control'}),
         }
 
-    
-
-
-# class ImageForm(ModelForm):
-#     # form for the image model
-#     class Meta:
-#         model = Image
-#         fields = ['title', 'image']
+#Creating a form to change an existing article.
+story = NewsStory.objects.get(pk=1)
+form = StoryForm(instance=story)

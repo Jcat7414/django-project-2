@@ -12,15 +12,10 @@
         {% csrf_token %}
         <div class="form-fields">
             {{ form.as_p }}
-        <p>Image requirements: .jpg file, 500px x 500px, max 50kb</p>
+        <p>Recommended Image: .jpg file, 1980x1080px, max 100kb</p>
         <button type="submit" id="form-button">Submit your story</button>
         </div>
     </form>
 </div>
-
-<!-- {% for image in StoryForm %}
-    {{ image.title }}
-    <img src = "{{ NewsStory.title }}.jpg" alt="Flair Family News Story Image">
-{% endfor %} -->
 
 {% endblock %}

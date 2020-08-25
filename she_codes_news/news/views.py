@@ -3,7 +3,6 @@ from django.urls import reverse_lazy
 from django.shortcuts import render
 from .models import NewsStory
 from .forms import StoryForm
-# from .forms import ImageForm
 
 
 class IndexView(generic.ListView):

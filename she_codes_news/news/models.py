@@ -4,24 +4,25 @@ from django.forms import ModelForm
 
 
 
-class Family(models.Model):
-    FOUNDER = "Founder" 
-    PARTNER = "Partner"
-    MENTOR = "Mentor"
-    TEAM = "Team"
-    ADVOCATE = "Advocate"
-    FAMILY_TYPE = [
-        (FOUNDER, "Founder"), 
-        (PARTNER, "Partner"), 
-        (MENTOR, "Mentor"),
-        (TEAM, "Flair Team"), 
-        (ADVOCATE, "Advocate")
-    ]
-    type = models.CharField(max_length=20, verbose_name="family member type", choices=FAMILY_TYPE, default=FOUNDER)
+# class Family(models.Model):
+# FOUNDER = "Founder" 
+# PARTNER = "Partner"
+# MENTOR = "Mentor"
+# TEAM = "Team"
+# ADVOCATE = "Advocate"
+# FAMILY_TYPE = [
+#     (FOUNDER, "Founder"), 
+#     (PARTNER, "Partner"), 
+#     (MENTOR, "Mentor"),
+#     (TEAM, "Flair Team"), 
+#     (ADVOCATE, "Advocate")
+# ]
 
-    def get_queryset(self):
-            '''Return all family types.'''
-            return self.type()
+#     type = models.CharField(max_length=20, verbose_name="family member type", choices=FAMILY_TYPE, default=FOUNDER)
+
+#     def get_queryset(self):
+#             '''Return all family types.'''
+#             return self.type()
 
     # def __str__(self):
     #     return self.type
@@ -29,11 +30,19 @@ class Family(models.Model):
 class NewsStory(models.Model):
     # created_at = models.DateTimeField(auto_now_add=True, story_name="Created at")
     # updated_at = models.DateTimeField(auto_now=True, story_name="Updated at")
-    title = models.CharField(max_length=200, verbose_name="story title")
-    author = models.CharField(max_length=200, verbose_name="written by")
+    title = models.CharField(max_length=100, verbose_name="story title")
+    author = models.CharField(max_length=50, verbose_name="written by")
     pub_date = models.DateTimeField(verbose_name="date published")
     category = models.CharField(max_length=20, verbose_name="story category", default='Type of Story')
     content = models.TextField(verbose_name="")
+    # family_type = (
+    #         ('founder', 'Founder'), 
+    #         ('partner', 'Partner'), 
+    #         ('mentor', 'Mentor'),
+    #         ('team', 'Flair Team'), 
+    #         ('advocate', 'Advocate'),
+    #     )
+    # family_member_type = models.CharField(max_length=20, verbose_name="family member type", choices=family_type)
     linkedin_url = models.CharField(max_length=200, verbose_name="linkedIn profile URL", default="Paste your LinkedIn URL here", blank=True)
     image = models.ImageField(upload_to='story_image/', verbose_name="story photo", default="placeholder-1.jpg")
     @property

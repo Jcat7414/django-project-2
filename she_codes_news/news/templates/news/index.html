@@ -8,7 +8,9 @@
 {% block content %}
 
 <h2>Latest News</h2>
+{% if request.user.is_authenticated %}
 <p><a href="{% url 'news:newStory' %}">Add Your Story</a></p>
+{% endif %}
 
     <div id="latest-stories">
         {% if latest_stories %}

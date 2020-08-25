@@ -135,3 +135,4 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 LOGIN_REDIRECT_URL = 'news:index'
 LOGOUT_REDIRECT_URL = 'news:index'
+# CREATE_ACCOUNT_REDIRECT_URL = 'users:createAccount'

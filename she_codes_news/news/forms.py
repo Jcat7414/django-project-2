@@ -9,7 +9,6 @@ class StoryForm(ModelForm):
         fields = ['title', 'pub_date', 'content', 'category', 'type', 'linkedin_url', 'image']
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-input'}),
-            # 'author': forms.TextInput(attrs={'class': 'form-input'}),
             'pub_date': forms.DateInput(format=('%m/%d/%Y'), attrs={'class':'form-input', 'placeholder':'Select a date', 'type':'date'}),
             'content': forms.Textarea(attrs={'class': 'form-input', 'placeholder': 'Write the story here'}),
             'category': forms.TextInput(attrs={'class': 'form-input', 'placeholder': 'Type of Story'}),

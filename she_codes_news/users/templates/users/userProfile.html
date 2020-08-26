@@ -1,8 +1,40 @@
 {% extends 'base.html' %}
+{% load static %}
 
-<!-- {% block content %}
-<h2>User Profile</h2>
+{% block stylesheets %}
+<link rel="stylesheet" type="text/css" href="{% static 'users/styles.css' %}">
+{% endblock %}
 
-    <a href="#">Edit Profile</a>
+{% block content %}
+{% if request.user.is_authenticated %}
 
-{% endblock %} -->
+<div class="account-page">
+    <h2>Profile for {{ user.full_name }}</h2>
+    <p>These details are visible to readers of The Flair Family News.</p>
+    <p>If you need to update your details, you can <a href="{% url 'users:createAccount' %}">edit</a> them.</p>
+</div>
+
+<div class="profile">
+    <div id="profile-photo">
+        <img src="{{ user.image.url }}" alt="" width="250">
+    </div>
+    <div class="profile-details">
+        <p>Name: {{ user.first_name }} {{ user.last_name }}</p>
+        <p>Business Name: {{ user.business_name }}</p>
+        <p>Flair Family: {{ user.type }}</p>
+        <p>Your Story: {{ user.bio|linebreaks }}</p>
+        <p>LinkedIn URL: {{ user.linkedin_url }}</p>
+    </div>
+</div>
+
+<div class="account-page">
+    <p>If you need to update your details, you can <a href="{% url 'users:createAccount' %}">edit</a> them.</p>
+</div>
+{% else %}
+<div class="account-page">
+    <h2>No Profile Details Available</h2>
+    <p>To view your profile details, please<a href="{% url 'login' %}"> login</a>.</p>
+</div>
+{% endif %}
+
+{% endblock %}

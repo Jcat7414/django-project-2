@@ -1,11 +1,18 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h2>Login</h2>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Login</button>
-</form>
-<p>If you do not have an login,<a href="{% url 'users:createAccount' %}"> create an account</a>.</p>
+<div class="account-page">
+    <h2>Login to your Account</h2>
+    <p>Login to access your profile and publish or edit your stories.</p>
+    <p>If you do not have a login,<a href="{% url 'users:createAccount' %}"> create an account</a>.</p>
+</div>
+
+<div class="new-form">
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Login</button>
+    </form>
+</div>
+
 {% endblock %}

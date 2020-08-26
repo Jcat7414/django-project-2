@@ -3,9 +3,6 @@ from django.db import models
 from django.utils import timezone
 from django.forms import ModelForm
 
-
-
-# class Family(models.Model):
 FOUNDER = "Founder" 
 PARTNER = "Partner"
 MENTOR = "Mentor"
@@ -18,15 +15,6 @@ FAMILY_TYPE = [
     (TEAM, "Flair Team"), 
     (ADVOCATE, "Advocate")
 ]
-
-#     type = models.CharField(max_length=20, verbose_name="family member type", choices=FAMILY_TYPE, default=FOUNDER)
-
-#     def get_queryset(self):
-#             '''Return all family types.'''
-#             return self.type()
-
-    # def __str__(self):
-    #     return self.type
 
 class NewsStory(models.Model):
     # created_at = models.DateTimeField(auto_now_add=True, story_name="Created at")

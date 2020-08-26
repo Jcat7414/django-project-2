@@ -1,12 +1,21 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h2>Create Account</h2>
-<form method="post">
-    <div class="form-fields">
+<div class="account-page">
+    <h2>Create an Account</h2>
+    <p>To be able to publish stories, you will need to create an account and set up your profile.
+        If you already have a profile, please <a href="{% url 'login' %}">login</a> instead.
+    </p>
+</div>
+
+<div class="new-form">
+    <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
-    <button type="submit">Create Account</button>
-    </div>
-</form>
+        <div class="form-fields">
+            {{ form.as_p }}
+        <button type="submit">Create Account</button>
+        </div>
+    </form>
+</div>
+
 {% endblock %}

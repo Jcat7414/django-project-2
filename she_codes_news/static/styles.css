@@ -54,8 +54,23 @@ a, p {
     font-family: 'Quicksand', sans-serif;
 }
 
+a {
+    font-weight: bold;
+    color: #27dbd2;
+}
+
 .new-story-page {
     display: block;
+    margin-left: 20%;
+    margin-right: 20%;
+    padding-top: 50px;
+}
+
+.account-page {
+    display: block;
+    margin-left: 20%;
+    margin-right: 20%;
+    padding-top: 50px;
 }
 
 .new-form {
@@ -123,4 +138,36 @@ select {
 
 input[type=file] {
     font-family: 'Quicksand', sans-serif;
+    font-size: medium;
+    padding: 12px 20px;
+    margin: 8px 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.form-input[type=email] {
+    font-family: 'Quicksand', sans-serif;
+    font-size: medium;
+    padding: 12px 20px;
+    margin: 8px 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+input[type=password] {
+    font-family: 'Quicksand', sans-serif;
+    font-size: medium;
+    padding: 12px 20px;
+    margin: 8px 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+input[type=text] {
+    font-family: 'Quicksand', sans-serif;
+    font-size: medium;
+    padding: 12px 20px;
+    margin: 8px 0;
+    width: 100%;
+    box-sizing: border-box;
 }

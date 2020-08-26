@@ -33,8 +33,8 @@ class CustomUser(AbstractUser):
         # "Returns the person's full name."
         return '%s %s' % (self.first_name, self.last_name)
 
-    def __str__(self):
-            return self.username
+    # def __str__(self):
+    #         return self.username
 
 
   

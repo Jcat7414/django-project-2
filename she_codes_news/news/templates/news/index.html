@@ -12,6 +12,28 @@
 <p><a href="{% url 'news:newStory' %}">Add Your Story</a></p>
 {% endif %}
 
+<!-- <p>View stories by: 
+    <div class="select-author">
+        <select id="authors">
+            <option value="" selected>select author</option>
+            {% for user in author_choices %}
+            <option value="{{ user.pk }}">{{ user.full_name }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Go</button>
+    </div>
+</p> -->
+
+<div class="new-form">
+    <form action ="" method="post">
+        {% csrf_token %}
+        <div class="form-fields">
+            {{ form.as_p }}
+        <button type="submit" id="form-button">Select Author</button>
+        </div>
+    </form>
+</div>
+
     <div id="latest-stories">
         {% if latest_stories %}
             {% for story in latest_stories %}

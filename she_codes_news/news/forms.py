@@ -1,6 +1,7 @@
 from django import forms
 from django.forms import ModelForm
 from .models import NewsStory
+from users.models import CustomUser
 
 
 class StoryForm(ModelForm):
@@ -19,3 +20,6 @@ class StoryForm(ModelForm):
 #Creating a form to change an existing article.
 # story = NewsStory.objects.get(pk=1)
 # form = StoryForm(instance=story)
+
+class SelectAuthorForm(forms.Form):
+    author = forms.ModelChoiceField(queryset=CustomUser.objects.all())

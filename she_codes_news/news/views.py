@@ -1,8 +1,12 @@
 from django.views import generic
 from django.urls import reverse_lazy
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import NewsStory
 from .forms import StoryForm
+from .forms import SelectAuthorForm
+from users.models import CustomUser
+from django.http import HttpResponseNotFound
+
 
 
 class IndexView(generic.ListView):
@@ -14,8 +18,9 @@ class IndexView(generic.ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['latest_stories'] = NewsStory.objects.order_by('-pub_date').all()[:4]
+        context['latest_stories'] = NewsStory.objects.order_by('-pub_date').all()[:3]
         context['all_stories'] = NewsStory.objects.order_by('-pub_date').all()
+        context['author_choices'] = CustomUser.objects.all()
         return context
 
 class ImageView(generic.CreateView):
@@ -48,4 +53,30 @@ class AddStoryView(generic.CreateView):
         form.instance.author = self.request.user
         return super().form_valid(form)
 
+class StoryByView(generic.ListView, generic.edit.FormMixin):
+    model = NewsStory
+    template_name = 'news/storyby.html'
+    context_object_name = 'story'
+    form_class = SelectAuthorForm
 
+    def get_queryset(self):
+        '''Return that authors news stories.'''
+        return NewsStory.objects.filter(author=self.kwargs['author_username'])
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['author_stories'] = NewsStory.objects.filter(author=self.kwargs['author_username']).order_by('-pub_date')
+        context['form'] = SelectAuthorForm
+        try:
+            context['author_username'] = CustomUser.objects.get(pk=self.kwargs['author_username']).full_name
+        except CustomUser.DoesNotExist:
+            return None
+        return context
+
+    def select_author(request):
+        #the job of this function is to process the form when POSTed
+        if request.method == "POST":
+            form = SelectAuthorForm(request.POST)
+
+            if form.is_valid():
+                return redirect("{% url news:authorStory author_username=form.cleaned_data['author'] %}")

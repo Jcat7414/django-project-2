@@ -26,7 +26,7 @@ class CustomUser(AbstractUser):
     type = models.CharField(max_length=20, verbose_name="family member type", choices=FAMILY_TYPE, default=FOUNDER)
     bio = models.TextField(verbose_name="tell us about yourself", blank=True)
     linkedin_url = models.CharField(max_length=200, verbose_name="linkedIn profile URL", default="Paste your LinkedIn URL here", blank=True)
-    profile_photo = models.ImageField(upload_to='profile_photo/', verbose_name="profile photo", default="placeholder-1.jpg", blank=True)
+    profile_photo = models.ImageField(upload_to='profile_photo/', verbose_name="profile photo", default="placeholder-1.jpg")
 
     @property
     def full_name(self):

@@ -23,6 +23,13 @@ class IndexView(generic.ListView):
         context['author_choices'] = CustomUser.objects.all()
         return context
 
+# class CategoryView(generic.ListView):
+#     template_name = 'news.category.html'
+
+#     def get_queryset(self):
+#         '''Return all stories for chosen category'''
+#         return NewsStory.objects.all(get(pk=self.kwargs['category']).category)
+
 class ImageView(generic.CreateView):
     template_name = 'news/createStory.html'
 
@@ -56,7 +63,7 @@ class AddStoryView(generic.CreateView):
 class StoryByView(generic.ListView, generic.edit.FormMixin):
     model = NewsStory
     template_name = 'news/storyby.html'
-    context_object_name = 'story'
+    context_object_name = 'storyby'
     form_class = SelectAuthorForm
 
     def get_queryset(self):

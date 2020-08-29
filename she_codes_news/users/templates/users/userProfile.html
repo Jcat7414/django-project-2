@@ -9,27 +9,42 @@
 {% if request.user.is_authenticated %}
 
 <div class="account-page">
-    <h2>Profile for {{ user.full_name }}</h2>
-    <p>These details are visible to readers of The Flair Family News.</p>
-    <p>If you need to update your details, you can <a href="{% url 'users:createAccount' %}">edit</a> them.</p>
+    <div class="user-intro">
+        <h3>Welcome Home {{ user.first_name }}</h3>
+        <p>Your profile details are visible to readers of The Flair Family News.</p>
+        <p>If you need to update your details, you can <a href="{% url 'users:createAccount' %}">edit</a> them.</p>
+        <p>Are you ready to publish a <a href="{% url 'news:newStory' %}">new story</a>?</p>
+        <p></p>
+    </div>
+
+    <div class="profile">
+        <h3>Your Profile Details</h3>
+        <div id="profile-photo">
+            <p>Profile Photo: </p>
+            <img src="{{ user.profile_photo.url }}" alt="" width="250" alt="{{ user.first_name }} Profile Photo">
+        </div>
+        <div class="profile-details">
+            <p>Name: {{ user.first_name }} {{ user.last_name }}</p>
+            <p>Business Name: {{ user.business_name }}</p>
+            <p>Flair Family: {{ user.type }}</p>
+            <p>Your Story: {{ user.bio|linebreaks }}</p>
+            <p>LinkedIn URL: {{ user.linkedin_url }}</p>
+        </div>
+    </div>
+
+    <div class="account-page">
+        <p>If you need to update your details, you can <a href="{% url 'users:createAccount' %}">edit</a> them.</p>
+    </div>
+
+    <div class="profile">
+        <h3>Your Private Information</h3>
+        <div class="profile-details">
+            <p>Username: {{ user.username }}</p>
+            <p>Email: {{ user.email }}</p>
+        </div>
+    </div>
 </div>
 
-<div class="profile">
-    <div id="profile-photo">
-        <img src="{{ user.profile_photo.url }}" alt="" width="250">
-    </div>
-    <div class="profile-details">
-        <p>Name: {{ user.first_name }} {{ user.last_name }}</p>
-        <p>Business Name: {{ user.business_name }}</p>
-        <p>Flair Family: {{ user.type }}</p>
-        <p>Your Story: {{ user.bio|linebreaks }}</p>
-        <p>LinkedIn URL: {{ user.linkedin_url }}</p>
-    </div>
-</div>
-
-<div class="account-page">
-    <p>If you need to update your details, you can <a href="{% url 'users:createAccount' %}">edit</a> them.</p>
-</div>
 {% else %}
 <div class="account-page">
     <h2>No Profile Details Available</h2>

@@ -9,20 +9,21 @@
 
 <h2>Latest News</h2>
 {% if request.user.is_authenticated %}
-<p><a href="{% url 'news:newStory' %}">Add Your Story</a></p>
+<p>Welcome back {{user.first_name }}</p>
+<p>Are you ready to publish a <a href="{% url 'news:newStory' %}">new story</a>?</p>
 {% endif %}
 
-<!-- <p>View stories by: 
-    <div class="select-author">
+<p>View stories by: 
+    <div class="new-form">
         <select id="authors">
-            <option value="" selected>select author</option>
+            <option value="" selected>all users</option>
             {% for user in author_choices %}
             <option value="{{ user.pk }}">{{ user.full_name }}</option>
             {% endfor %}
         </select>
-        <button type="submit">Go</button>
+        <button type="submit" id="form-button">Select</button>
     </div>
-</p> -->
+</p>
 
 <div class="new-form">
     <form action ="" method="post">

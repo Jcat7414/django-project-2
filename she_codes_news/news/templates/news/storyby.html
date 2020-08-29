@@ -8,7 +8,7 @@
 {% block content %}
 <h2>Stories by {{ author_username }}</h2>
 
-<div id="latest-stories">
+<div id="author-stories">
     {% for story in author_stories %}
         {% include "./storyCard.html" with story=story position=forloop.counter %}
     {% endfor %}

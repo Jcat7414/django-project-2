@@ -85,3 +85,12 @@
     margin: 0 0 10px 10px;
     width: 50%;
 }
+
+#author-stories {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 1px 1px 1px;
+    grid-template-areas: "left-1 right-1" "left-1 right-2" "left-1 right-3";
+    max-height: 500px;
+}

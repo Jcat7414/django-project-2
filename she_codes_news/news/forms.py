@@ -22,4 +22,4 @@ class StoryForm(ModelForm):
 # form = StoryForm(instance=story)
 
 class SelectAuthorForm(forms.Form):
-    author = forms.ModelChoiceField(queryset=CustomUser.objects.all())
+    authors = forms.ModelChoiceField(queryset=CustomUser.objects.all())

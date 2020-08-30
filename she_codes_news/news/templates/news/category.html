@@ -1,18 +1,12 @@
-{% load static %}
+<!-- {% load static %}
 
 {% block stylesheets %}
 <link rel="stylesheet" type="text/css" href="{% static 'news/styles.css' %}">
 {% endblock %}
 
 
-<div class="story-card" id="story-card-{{ position }}">
-    <a href="{% url 'news:story' story.id %}">
-            <img src="{{ story.image.url }}" alt="" width="250">
-        <div class="story-card-text">
-            <h3>{{ story.title }}</h3>
-            <h4>{{ story.author.full_name }}</h4>
-            <h4>{{ story.better_date }}</h4>
-            <h4>{{ story.category }}</h4>
-        </div>
+<div class="category-list">
+    <a href="{% url 'news:category' %}">
+        {{ story.category }}
     </a>
-</div>
+</div> -->

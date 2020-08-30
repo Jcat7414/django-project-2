@@ -23,12 +23,7 @@ class IndexView(generic.ListView):
         context['author_choices'] = CustomUser.objects.all()
         return context
 
-# class CategoryView(generic.ListView):
-#     template_name = 'news.category.html'
 
-#     def get_queryset(self):
-#         '''Return all stories for chosen category'''
-#         return NewsStory.objects.all(get(pk=self.kwargs['category']).category)
 
 class ImageView(generic.CreateView):
     template_name = 'news/createStory.html'
@@ -60,7 +55,7 @@ class AddStoryView(generic.CreateView):
         form.instance.author = self.request.user
         return super().form_valid(form)
 
-class StoryByView(generic.ListView, generic.edit.FormMixin):
+class StoryByView(generic.ListView):
     model = NewsStory
     template_name = 'news/storyby.html'
     context_object_name = 'storyby'
@@ -73,7 +68,7 @@ class StoryByView(generic.ListView, generic.edit.FormMixin):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['author_stories'] = NewsStory.objects.filter(author=self.kwargs['author_username']).order_by('-pub_date')
-        context['form'] = SelectAuthorForm
+        context['form'] = SelectAuthorForm()
         try:
             context['author_username'] = CustomUser.objects.get(pk=self.kwargs['author_username']).full_name
         except CustomUser.DoesNotExist:
@@ -87,3 +82,9 @@ class StoryByView(generic.ListView, generic.edit.FormMixin):
 
             if form.is_valid():
                 return redirect("{% url news:authorStory author_username=form.cleaned_data['author'] %}")
+
+# class CategoryView(generic.ListView):
+#     template_name = 'news/category.html'
+#     def get_queryset(self):
+#         '''Return all stories for chosen category'''
+#         return NewsStory.objects.all()

@@ -1,12 +1,17 @@
-<!-- {% load static %}
+<!-- {% extends "base.html" %}
+{% load static %}
+{% block title %}FFN: Stories about {{ story.category }}{% endblock %}
 
 {% block stylesheets %}
 <link rel="stylesheet" type="text/css" href="{% static 'news/styles.css' %}">
 {% endblock %}
 
+{% block content %}
 
 <div class="category-list">
     <a href="{% url 'news:category' %}">
         {{ story.category }}
     </a>
 </div> -->
+
+{% endblock %} -->

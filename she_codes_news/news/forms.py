@@ -20,6 +20,7 @@ class StoryForm(ModelForm):
 #Creating a form to change an existing article.
 # story = NewsStory.objects.get(pk=1)
 # form = StoryForm(instance=story)
-
+ 
 class SelectAuthorForm(forms.Form):
-    authors = forms.ModelChoiceField(queryset=CustomUser.objects.all())
+    class Meta:
+        author = forms.ModelChoiceField(queryset=CustomUser.objects.all())

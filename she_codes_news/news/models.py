@@ -2,6 +2,7 @@ from django.contrib.auth import get_user_model
 from django.db import models
 from django.utils import timezone
 from django.forms import ModelForm
+from django.urls import reverse
 
 FOUNDER = "Founder" 
 PARTNER = "Partner"
@@ -25,7 +26,7 @@ class NewsStory(models.Model):
     category = models.CharField(max_length=20, verbose_name="story category", default='Type of Story')
     type = models.CharField(max_length=20, verbose_name="family member type", choices=FAMILY_TYPE, default=FOUNDER)
     content = models.TextField(verbose_name="")
-    linkedin_url = models.CharField(max_length=200, verbose_name="linkedIn profile URL", default="Paste your LinkedIn URL here", blank=True)
+    linkedin_url = models.CharField(max_length=200, verbose_name="linkedIn profile URL", blank=True)
     image = models.ImageField(upload_to='story_image/', verbose_name="story photo", default="placeholder-1.jpg")
     @property
     def better_date(self):
@@ -33,5 +34,6 @@ class NewsStory(models.Model):
             return self.pub_date.strftime("%d %b %Y")
         else:
             return "no_date"
-    
+
+
 

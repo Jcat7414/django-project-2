@@ -5,7 +5,11 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>The Flair Family News</title>
+        <title>
+            {% block title %}
+                The Flair Family News
+            {% endblock %}
+        </title>
         <meta name="description" content="">
         <meta name="author" content="Joy Taylor">
         <link href="https://fonts.googleapis.com/css2?family=Playball&family=Quicksand&display=swap" rel="stylesheet">
@@ -25,6 +29,8 @@
         </header>
 
         <!-- content blocks here -->
-        {% block content %}{% endblock %}
+        <div class="container">
+            {% block content %}{% endblock %}
+        </div>
     </body>
 </html>

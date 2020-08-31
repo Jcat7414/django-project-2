@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}FFN: Delete story{% endblock %}
+
+{% block content %}
+<div class="new-story-page">
+    <h3>Delete your story</h3>
+    <p>If your story is no longer accurate and is no longer needed, it can be deleted.</p> 
+    <p>Once you delete your story, it will immediately be remove from The Flair Family News is cannot be recovered.</p>
+    <br>
+    {% if request.user.is_authenticated %}
+    <h3>Delete: {{ story.title }} by {{ story.author.full_name }}</h3>
+</div>
+
+<div class="new-form">
+    <form action ="" method="post">
+        {% csrf_token %}
+        <div class="form-fields">
+            <p><strong>Are you sure you want to delete?</strong></p>
+        <button type="submit" id="form-button">Delete story</button>
+        </div>
+    </form>
+</div>
+{% endif %}
+
+{% endblock %}

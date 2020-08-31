@@ -62,7 +62,7 @@ class StoryByView(generic.ListView):
     form_class = SelectAuthorForm
 
     def get_queryset(self):
-        '''Return that authors news stories.'''
+        '''Return that author's news stories.'''
         return NewsStory.objects.filter(author=self.kwargs['author_username'])
 
     def get_context_data(self, **kwargs):
@@ -81,10 +81,27 @@ class StoryByView(generic.ListView):
             form = SelectAuthorForm(request.POST)
 
             if form.is_valid():
-                return redirect("{% url news:authorStory author_username=form.cleaned_data['author'] %}")
+                return redirect("{% url 'news:authorStory' author_username=form.cleaned_data['author'] %}")
 
 # class CategoryView(generic.ListView):
 #     template_name = 'news/category.html'
 #     def get_queryset(self):
 #         '''Return all stories for chosen category'''
 #         return NewsStory.objects.all()
+
+class EditStoryView(generic.UpdateView):
+    model = NewsStory
+    form_class = StoryForm
+    template_name = 'news/editStory.html'
+    success_url = reverse_lazy('news:index')
+
+class DeleteStoryView(generic.DeleteView):
+    model = NewsStory
+    template_name = 'news/deleteStory.html'
+    success_url = reverse_lazy('news:index')
+    
+class AuthorView(generic.ListView):
+    model = NewsStory
+    template_name = 'news.index.html'
+    fields = ['author']
+    success_url = reverse_lazy('news:authorStory user.pk')

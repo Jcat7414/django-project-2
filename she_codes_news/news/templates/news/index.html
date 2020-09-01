@@ -13,28 +13,6 @@
 <p>Are you ready to publish a <a href="{% url 'news:newStory' %}">new story</a>?</p>
 {% endif %}
 
-<p>View stories by: 
-    <div class="new-form">
-        <select id="authors">
-            <option value="" selected>all users</option>
-            {% for user in author_choices %}
-            <option value="{{ user.pk }}">{{ user.full_name }}</option>
-            {% endfor %}
-        </select>
-            <button type="submit" id="form-button">Select Author</button>
-    </div>
-</p>
-
-<div class="new-form">
-    <form action ="" method="get">
-        {% csrf_token %}
-        <div class="form-fields">
-            {{ form.as_p }}
-        <button type="submit" id="form-button">Select Author</button>
-        </div>
-    </form>
-</div>
-
     <div id="latest-stories">
         {% if latest_stories %}
             {% for story in latest_stories %}
@@ -43,6 +21,14 @@
         {% else %}
             <p>No stories are available.</p>
         {% endif %}
+    </div>
+
+    <div class="new-form">
+    <form action ="" method="get">
+        {{ form.as_p }}
+        <p>test</p>
+        <button type="submit" id="form-button">Select Author</button>
+    </form>
     </div>
 
     <div id="all-stories">

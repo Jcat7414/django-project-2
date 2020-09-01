@@ -2,6 +2,8 @@
 {% block title %}FFN: Edit story{% endblock %}
 
 {% block content %}
+
+{% if user.is_authenticated %}
 <div class="new-story-page">
     <h3>Edit your story</h3>
     <p>Edit any of the details to your story in the fields below.</p> 
@@ -18,5 +20,10 @@
         </div>
     </form>
 </div>
+{% else %}
+
+<p>To edit a story, please <a href="{% url 'login' %}">login</a> first</p>
+
+{% endif %}
 
 {% endblock %}

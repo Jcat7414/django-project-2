@@ -17,10 +17,7 @@ class StoryForm(ModelForm):
             'linkedin_url': forms.TextInput(attrs={'class': 'form-input', 'placeholder': 'Paste your LinkedIn URL here'}),
         }
 
-#Creating a form to change an existing article.
-# story = NewsStory.objects.get(pk=1)
-# form = StoryForm(instance=story)
- 
 class SelectAuthorForm(forms.Form):
     class Meta:
         author = forms.ModelChoiceField(queryset=CustomUser.objects.all())
+

@@ -22,4 +22,4 @@ class CustomUserChangeForm(UserChangeForm):
     # to make changes to an existing user
     class Meta:
         model = CustomUser
-        fields = ['username', 'email']
+        fields = ['username', 'email', 'first_name', 'last_name', 'business_name', 'type', 'bio', 'linkedin_url', 'profile_photo']

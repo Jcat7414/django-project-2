@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.views.generic.edit import CreateView
 from .models import CustomUser
 from .forms import CustomUserCreationForm
-# from .forms import CustomUserChangeForm
+from .forms import CustomUserChangeForm
 
 class CreateAccountView(CreateView):
     form_class = CustomUserCreationForm
@@ -35,8 +35,7 @@ class ImageView(generic.CreateView):
             form = CustomUserCreationForm()
         return render(request, 'createAccount.html', {'form': form})
 
-# not sure this should be CreateView, perhaps ChangeView?
-# class ChangeAccountView(CreateView):
-#     form_class = CustomUserChangeForm
-#     success_url = reverse_lazy('profile')
-#     template_name = 'users.userProfile.html'
+class ChangeAccountView(CreateView):
+    form_class = CustomUserChangeForm
+    success_url = reverse_lazy('userProfile')
+    template_name = 'users/editProfile.html'

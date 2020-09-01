@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}FFN: Edit Your Account{% endblock %}
+
+{% block content %}
+
+<div class="account-page">
+    <h2>Edit Your Account</h2>
+    <p>Keep your profile up to date, so that anyone who wants to connect with you can do so easily.
+        If you already have a profile, please <a href="{% url 'login' %}">login</a> instead.
+    </p>
+</div>
+
+{% if request.user.is_authenticated %}
+<div class="new-form">
+    <form action ="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-fields">
+            {{ form.as_p }}
+        <button type="submit" id="form-button">Edit Account</button>
+        </div>
+    </form>
+</div>
+{% endif %}
+{% endblock %}

@@ -17,6 +17,16 @@ FAMILY_TYPE = [
     (ADVOCATE, "Advocate")
 ]
 
+class Category(models.Model):
+    name = models.CharField(max_length=100, verbose_name="category")
+
+    def __str__(self):
+        return self.name
+
+    def get_absolute_url(self):
+            return reverse('index')
+
+
 class NewsStory(models.Model):
     # created_at = models.DateTimeField(auto_now_add=True, story_name="Created at")
     # updated_at = models.DateTimeField(auto_now=True, story_name="Updated at")
@@ -35,5 +45,7 @@ class NewsStory(models.Model):
         else:
             return "no_date"
 
+    def get_absolute_url(self):
+        return reverse('index')
 
 

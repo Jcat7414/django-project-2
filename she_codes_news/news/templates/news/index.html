@@ -24,14 +24,6 @@
         {% endif %}
     </div>
 
-    <div class="new-form">
-    <form action ="" method="get">
-        {{ form.as_p }}
-        <p>test</p>
-        <button type="submit" id="form-button">Select Author</button>
-    </form>
-    </div>
-
     <div id="all-stories">
         {% if latest_stories %}
             {% for story in all_stories %}

@@ -13,7 +13,7 @@
     <div class="user-intro">
         <h3>Welcome Home {{ user.first_name }}</h3>
         <p>Your profile details are visible to readers of The Flair Family News.</p>
-        <p>If you need to update your details, you can <a href="{% url 'users:createAccount' %}">edit</a> them.</p>
+        <p>If you need to update your details, you can <a href="{% url 'users:editProfile' %}">edit</a> them.</p>
         <p>Are you ready to publish a <a href="{% url 'news:newStory' %}">new story</a>?</p>
         <p></p>
     </div>
@@ -31,10 +31,6 @@
             <p>Your Story: {{ user.bio|linebreaks }}</p>
             <p>LinkedIn URL: {{ user.linkedin_url }}</p>
         </div>
-    </div>
-
-    <div class="account-page">
-        <p>If you need to update your details, you can <a href="{% url 'users:createAccount' %}">edit</a> them.</p>
     </div>
 
     <div class="profile">

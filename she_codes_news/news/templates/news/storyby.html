@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
-{% block title %}FFN: Stories by {{ auth }}{% endblock %}
+{% block title %}FFN: Stories by {{ user.full_name }}{% endblock %}
 
 {% block stylesheets %}
 <link rel="stylesheet" type="text/css" href="{% static 'news/styles.css' %}">
@@ -8,14 +8,15 @@
 
 {% block content %}
 
-<h2>Stories by {{ auth }} </h2>
-
 {% for story in auth_story %}
+<h2>Stories by {{ story.author.full_name }} </h2>
+
     <div class="story-card" id="story-card-{{ position }}">
         <img src="{{ story.image.url }}" alt="" width="250">
         <div class="story-card-text">
             <h3>{{ story.title }}</h3>
-            <h4>{{ story.better_date }} | {{ story.category }}</h4>
+            <h4>{{ story.author.full_name }} | {{ story.better_date }} | 
+                <a href="{% url 'news:categoryStory' story.category %}">{{ story.category }}</a></h4>
             {{ story.content|slice:"150" }} <a href="{% url 'news:story' story.id %}">read more...</a>
         </div>
     </div>

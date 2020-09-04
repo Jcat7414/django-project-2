@@ -1,7 +1,7 @@
 from django.views import generic
 from django.urls import reverse_lazy
 from django.shortcuts import render
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView
 from .models import CustomUser
 from .forms import CustomUserCreationForm
 from .forms import CustomUserChangeForm
@@ -35,7 +35,10 @@ class ImageView(generic.CreateView):
             form = CustomUserCreationForm()
         return render(request, 'createAccount.html', {'form': form})
 
-class ChangeAccountView(CreateView):
+class ChangeAccountView(UpdateView):
     form_class = CustomUserChangeForm
-    success_url = reverse_lazy('userProfile')
+    success_url = reverse_lazy('users:userProfile')
     template_name = 'users/editProfile.html'
+    
+    def get_object(self):
+        return self.request.user

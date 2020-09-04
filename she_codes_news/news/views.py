@@ -1,7 +1,7 @@
 from django.views import generic
 from django.urls import reverse_lazy
 from django.shortcuts import render, redirect
-from .models import NewsStory
+from .models import NewsStory, Category
 from .forms import StoryForm
 from .forms import SelectAuthorForm
 from users.models import CustomUser
@@ -78,14 +78,14 @@ class AddStoryView(generic.CreateView):
         form.instance.author = self.request.user
         return super().form_valid(form)
 
-class StoryByView(generic.ListView):
-    model = NewsStory
-    template_name = 'news/storyby.html'
-    context_object_name = 'storyby'
+# class StoryByView(generic.ListView):
+#     model = NewsStory
+#     template_name = 'news/storyby.html'
+#     context_object_name = 'storyby'
 
-    def get_queryset(self):
-        '''Return that author's news stories.'''
-        return NewsStory.objects.filter(author=self.kwargs['author_username'])
+#     def get_queryset(self):
+#         '''Return that author's news stories.'''
+#         return NewsStory.objects.filter(author=self.kwargs['author_username'])
 
 class EditStoryView(generic.UpdateView):
     model = NewsStory
@@ -98,8 +98,17 @@ class DeleteStoryView(generic.DeleteView):
     template_name = 'news/deleteStory.html'
     success_url = reverse_lazy('news:index')
     
-# class AuthorView(generic.ListView):
-#     model = NewsStory
-#     template_name = 'news.index.html'
-#     fields = ['author']
-#     success_url = reverse_lazy('news:authorStory user.pk')
+def AuthorView(request, auth):
+    auth = request.user
+    auth_story = NewsStory.objects.filter(author=auth)
+    return render(request, 'news/storyby.html', {'auth':auth, 'auth_story':auth_story})
+
+class AddCategoryView(generic.CreateView):
+    model = Category
+    template_name = 'news/addCategory.html'
+    fields = '__all__'
+    success_url = reverse_lazy('news:index')
+
+def CategoryView(request, cats):
+    category_story = NewsStory.objects.filter(category=cats)
+    return render(request, 'news/category.html', {'cats': cats, 'category_story':category_story})

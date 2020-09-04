@@ -1,9 +1,15 @@
 from django import forms
 from django.forms import ModelForm
-from .models import NewsStory
+from .models import NewsStory, Category
 from users.models import CustomUser
 
-choices = ['']
+choices = Category.objects.all().values_list('name', 'name')
+
+choice_list = []
+
+for item in choices:
+    choice_list.append(item)
+
 
 class StoryForm(ModelForm):
     class Meta:
@@ -13,7 +19,7 @@ class StoryForm(ModelForm):
             'title': forms.TextInput(attrs={'class': 'form-input'}),
             'pub_date': forms.DateInput(format=('%m/%d/%Y'), attrs={'class':'form-input', 'placeholder':'Select a date', 'type':'date'}),
             'content': forms.Textarea(attrs={'class': 'form-input', 'placeholder': 'Write the story here'}),
-            'category': forms.Select(attrs={'class': 'form-input'}),
+            'category': forms.Select(choices=choice_list, attrs={'class': 'form-input'}),
             'type': forms.Select(attrs={'class': 'form-imput', 'default': 'Founder'}),
             'linkedin_url': forms.TextInput(attrs={'class': 'form-input', 'placeholder': 'Paste your LinkedIn URL here'}),
         }

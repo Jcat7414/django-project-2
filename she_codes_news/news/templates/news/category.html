@@ -1,6 +1,6 @@
-<!-- {% extends "base.html" %}
+{% extends "base.html" %}
 {% load static %}
-{% block title %}FFN: Stories about {{ story.category }}{% endblock %}
+{% block title %}FFN: Stories about {{ cats }}{% endblock %}
 
 {% block stylesheets %}
 <link rel="stylesheet" type="text/css" href="{% static 'news/styles.css' %}">
@@ -8,10 +8,20 @@
 
 {% block content %}
 
-<div class="category-list">
-    <a href="{% url 'news:category' %}">
-        {{ story.category }}
-    </a>
-</div> -->
+<h2>{{ cats }} Category Stories</h2>
 
-{% endblock %} -->
+{% for story in category_story %}
+    <div class="story-card" id="story-card-{{ position }}">
+        <img src="{{ story.image.url }}" alt="" width="250">
+        <div class="story-card-text">
+            <h3>{{ story.title }}</h3>
+            <h4>{{ story.author.full_name }} | {{ story.better_date }}</h4>
+            {{ story.content|slice:"150" }} <a href="{% url 'news:story' story.id %}">read more...</a>
+        </div>
+    </div>
+
+{% endfor %}
+
+
+
+{% endblock %}

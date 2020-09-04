@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}FFN: Add a new category{% endblock %}
+
+{% block content %}
+<div class="new-story-page">
+    <h3>Add a Category</h3>
+    <p>Create a new Category of story.</p> 
+</div>
+
+<div class="new-form">
+    <form action ="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-fields">
+            {{ form.as_p }}
+        <button type="submit" id="form-button">Add Category</button>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

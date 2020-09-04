@@ -10,6 +10,7 @@
 {% if request.user.is_authenticated %}
 <p>Welcome back {{user.first_name }}</p>
 <p>Are you ready to publish a <a href="{% url 'news:newStory' %}">new story</a>?</p>
+<p>Would you like to create a <a href="{% url 'news:addCategory' %}">new Story Category</a>?</p>
 {% endif %}
 
 <h2>Latest News</h2>

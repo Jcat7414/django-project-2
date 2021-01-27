@@ -11,11 +11,11 @@
 {% for story in auth_story %}
 <h2>Stories by {{ story.author.full_name }} </h2>
 
-    <div class="story-card" id="story-card-{{ position }}">
+    <div class="author-stories" id="author-story-card">
         <img src="{{ story.image.url }}" alt="" width="250">
         <div class="story-card-text">
             <h3>{{ story.title }}</h3>
-            <h4>{{ story.author.full_name }} | {{ story.better_date }} | 
+            <h4>{{ story.better_date }} | 
                 <a href="{% url 'news:categoryStory' story.category %}">{{ story.category }}</a></h4>
             {{ story.content|slice:"150" }} <a href="{% url 'news:story' story.id %}">read more...</a>
         </div>

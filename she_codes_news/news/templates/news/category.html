@@ -15,7 +15,7 @@
         <img src="{{ story.image.url }}" alt="" width="250">
         <div class="story-card-text">
             <h3>{{ story.title }}</h3>
-            <h4><a href="{% url 'news:authorStory' story.author.id %}">{{ story.author.full_name }}</a> | {{ story.better_date }} | {{ story.category }}</h4>
+            <h4><a href="{% url 'news:authorStory' story.author.id %}">{{ story.author.full_name }}</a> | {{ story.better_date }}</h4>
             {{ story.content|slice:"150" }} <a href="{% url 'news:story' story.id %}">read more...</a>
         </div>
     </div>
